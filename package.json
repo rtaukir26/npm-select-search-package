@@ -1,6 +1,6 @@
 {
   "name": "react-select-search-sm",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React Select Search component that supports single and multiple selections.",
   "main": "dist/index.js",
   "module": "dist/index.js",
