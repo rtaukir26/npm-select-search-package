@@ -2,6 +2,14 @@
   "name": "react-select-search-sm",
   "version": "1.0.8",
   "description": "React Select Search component that supports single and multiple selections.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rtaukir26/npm-select-search-package"
+  },
+  "homepage": "https://github.com/rtaukir26/npm-select-search-package#readme",
+  "bugs": {
+    "url": "https://github.com/rtaukir26/npm-select-search-package"
+  },
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
