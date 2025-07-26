@@ -8,6 +8,10 @@ A lightweight and customizable React dropdown component with support for:
 
 ---
 
+## Demo
+
+![Demo](./src/assets/selectSearchDemo.gif)
+
 ## Installation
 
 ```bash
