@@ -146,7 +146,9 @@ const SelectSearch = ({
       setMainOptions((pre) =>
         pre?.map((item) => ({ ...item, isSelected: true }))
       );
-
+      if (handleChange) {
+        return handleChange(options);
+      }
       setSelectedOption(options);
     } else {
       setReceivedOptions((pre) =>

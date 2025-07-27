@@ -98,6 +98,7 @@ label {
 }
 .no-data-found {
   text-align: center;
+  padding: 10px;
 }
 .search-container {
   padding: 5px;
