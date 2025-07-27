@@ -7,13 +7,17 @@ const SelectSearch = ({
   options = [],
   selectedOption,
   setSelectedOption = () => {},
+  handleChange = null,
   multi = false,
   label = "Select",
+  searchPlaceholder = "Search",
+  notFound = "No data found",
 }) => {
   const [mainOptions, setMainOptions] = useState([]);
   const [receivedOptions, setReceivedOptions] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [open, setOpen] = useState(false);
+  const [showClear, setShowClear] = useState(false);
   const containerRef = useRef(null);
   const optionConRef = useRef(null);
   const [dropUp, setDropUp] = useState(false);
@@ -58,8 +62,22 @@ const SelectSearch = ({
     };
   }, []);
 
+  //when mouse on the drop down
+  const onMouseEnterDropDown = () => {
+    setShowClear(true);
+  };
+
+  //when mouse leaves from the drop down
+  const onMouseLeaveFromDropDown = () => {
+    setShowClear(false);
+  };
+
   //multi selection handler
   const handleSelectOption = (selectedItem) => {
+    if (handleChange) {
+      let { isSelected, ...rest } = selectedItem;
+      return handleChange(rest);
+    }
     setReceivedOptions((pre) =>
       pre?.map((item) => ({
         ...item,
@@ -91,6 +109,11 @@ const SelectSearch = ({
   //single selection handler
   const handleSingleSelectOption = (selectedItem) => {
     setOpen(false);
+    setShowClear(false);
+    if (handleChange) {
+      let { isSelected, ...rest } = selectedItem;
+      return handleChange(rest);
+    }
 
     setReceivedOptions((pre) =>
       pre?.map((item) => ({
@@ -147,7 +170,12 @@ const SelectSearch = ({
     setReceivedOptions(filterData);
   };
   return (
-    <div className="main-select-container" data-as="options">
+    <div
+      className="main-select-container"
+      data-as="options"
+      onMouseEnter={onMouseEnterDropDown}
+      onMouseLeave={onMouseLeaveFromDropDown}
+    >
       <div
         ref={containerRef}
         className="selected-items"
@@ -170,9 +198,10 @@ const SelectSearch = ({
         )}
       </div>
       <div className="right-tools">
-        {selectedOption?.length > 0 && (
+        {selectedOption?.length > 0 && showClear && (
           <div className="close-div">
             <img
+              className="close zoom-anim"
               title="Clear"
               onClick={() => {
                 setSelectedOption([]);
@@ -183,7 +212,6 @@ const SelectSearch = ({
                   pre?.map((item) => ({ ...item, isSelected: false }))
                 );
               }}
-              className="close zoom-anim"
               src={closeIcon}
               alt="close"
             />
@@ -219,7 +247,7 @@ const SelectSearch = ({
               <input
                 className="search-input "
                 type="text"
-                placeholder="Search"
+                placeholder={searchPlaceholder}
                 value={searchInput}
                 onChange={handleSearch}
               />
@@ -271,7 +299,7 @@ const SelectSearch = ({
               </>
             ) : (
               <li className="no-data-found">
-                <span>No data found</span>
+                <span>{notFound}</span>
               </li>
             )}
           </ul>
