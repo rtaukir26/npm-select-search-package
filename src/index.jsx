@@ -74,10 +74,6 @@ const SelectSearch = ({
 
   //multi selection handler
   const handleSelectOption = (selectedItem) => {
-    if (handleChange) {
-      let { isSelected, ...rest } = selectedItem;
-      return handleChange(rest);
-    }
     setReceivedOptions((pre) =>
       pre?.map((item) => ({
         ...item,
@@ -96,7 +92,10 @@ const SelectSearch = ({
             : item?.isSelected,
       }))
     );
-
+    if (handleChange) {
+      let { isSelected, ...rest } = selectedItem;
+      return handleChange(rest);
+    }
     if (selectedOption?.some((item) => item?.value === selectedItem?.value)) {
       setSelectedOption((pre) =>
         pre.filter((item) => item?.value !== selectedItem?.value)
@@ -110,10 +109,6 @@ const SelectSearch = ({
   const handleSingleSelectOption = (selectedItem) => {
     setOpen(false);
     setShowClear(false);
-    if (handleChange) {
-      let { isSelected, ...rest } = selectedItem;
-      return handleChange(rest);
-    }
 
     setReceivedOptions((pre) =>
       pre?.map((item) => ({
@@ -133,7 +128,11 @@ const SelectSearch = ({
             : item?.isSelected,
       }))
     );
+
     let { isSelected, ...rest } = selectedItem; //removing modified data(isSelected) and kept only original data
+    if (handleChange) {
+      return handleChange(rest);
+    }
 
     setSelectedOption([rest]);
   };
