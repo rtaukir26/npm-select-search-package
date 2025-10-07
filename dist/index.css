@@ -70,22 +70,21 @@
 .drop-down {
   top: 50px;
 }
-ul {
+.ul-list {
   padding: 10px;
   max-height: 160px;
   overflow: auto;
-  /* height: 150px; */
 }
-li {
+.ul-item {
   font-size: 12px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   border-radius: 5px;
 }
-li:hover {
+.ul-item:hover {
   background: #c7edea4f;
 }
-li.active {
+.ul-item.active {
   background: #607d8b;
   color: #fff;
 }
@@ -98,6 +97,7 @@ label {
 }
 .no-data-found {
   text-align: center;
+  padding: 10px;
 }
 .search-container {
   padding: 5px;

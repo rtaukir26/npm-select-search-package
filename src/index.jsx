@@ -266,16 +266,16 @@ const SelectSearch = ({
               )}
             </div>
           </div>
-          <ul>
+          <ul className="ul-list">
             {receivedOptions?.length > 0 ? (
               <>
                 {receivedOptions?.map((item, i) => (
                   <li
-                    className={
+                    className={`ul-item ${
                       !multi && selectedOption[0]?.name === item?.name
                         ? "active"
                         : ""
-                    }
+                    }`}
                     key={i}
                     onClick={() =>
                       !multi ? handleSingleSelectOption(item) : null
