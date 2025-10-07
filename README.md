@@ -49,7 +49,7 @@ setSelectedOption={setSelected}
 multi={false} // true -- for multi select
 label="Select item"
 searchPlaceholder="Search"
-handleChange=null
+handleChange={null}
 />
 );
 }

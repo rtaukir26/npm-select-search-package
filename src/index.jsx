@@ -281,7 +281,7 @@ const SelectSearch = ({
                       !multi ? handleSingleSelectOption(item) : null
                     }
                   >
-                    <label htmlFor={item?.name}>
+                    <label htmlFor={item?.name} className="lbl-checkbox">
                       {multi && (
                         <input
                           type="checkbox"
