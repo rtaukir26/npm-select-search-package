@@ -50,6 +50,7 @@ multi={false} // true -- for multi select
 label="Select item"
 searchPlaceholder="Search"
 handleChange={null}
+ search = {false},
 />
 );
 }
@@ -67,6 +68,7 @@ export default App;
 | `setSelectedOption` | `function` | `() => {}`        | Setter to update selected option(s)                           |
 | `multi`             | `boolean`  | `false`           | Enables multi-select mode if `true`, single-select if `false` |
 | `label`             | `string`   | `"Select"`        | Placeholder label shown when nothing is selected              |
+| `search`            | `boolean`  | `false`           | Enables search input inside the dropdown if `true`            |
 | `searchPlaceholder` | `string`   | `"search.."`      | Placeholder inside the search input                           |
 | `notFound`          | `string`   | `"No data found"` | Text shown when no options match the search term              |
 | `handleChange`      | `function` | `null`            | Optional callback triggered when selection changes            |

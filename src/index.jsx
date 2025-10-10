@@ -12,6 +12,7 @@ const SelectSearch = ({
   label = "Select",
   searchPlaceholder = "Search",
   notFound = "No data found",
+  search = false,
 }) => {
   const [mainOptions, setMainOptions] = useState([]);
   const [receivedOptions, setReceivedOptions] = useState([]);
@@ -244,27 +245,29 @@ const SelectSearch = ({
                 </label>
               </div>
             )}
-            <div className="search-wrapper">
-              <input
-                className="search-input "
-                type="text"
-                placeholder={searchPlaceholder}
-                value={searchInput}
-                onChange={handleSearch}
-              />
-              <img className="search-icon" src={searchIcon} alt="search" />
-              {searchInput && (
-                <img
-                  onClick={() => {
-                    setReceivedOptions(mainOptions);
-                    setSearchInput("");
-                  }}
-                  className="close-img zoom-anim"
-                  src={closeIcon}
-                  alt="close"
+            {search && (
+              <div className="search-wrapper">
+                <input
+                  className="search-input "
+                  type="text"
+                  placeholder={searchPlaceholder}
+                  value={searchInput}
+                  onChange={handleSearch}
                 />
-              )}
-            </div>
+                <img className="search-icon" src={searchIcon} alt="search" />
+                {searchInput && (
+                  <img
+                    onClick={() => {
+                      setReceivedOptions(mainOptions);
+                      setSearchInput("");
+                    }}
+                    className="close-img zoom-anim"
+                    src={closeIcon}
+                    alt="close"
+                  />
+                )}
+              </div>
+            )}
           </div>
           <ul className="ul-list">
             {receivedOptions?.length > 0 ? (
